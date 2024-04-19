@@ -16,9 +16,9 @@ public interface DataAccess {
     void updateJobClass(Job job);
     void deleteJobClass(int jobClassID);
 
-//    void addProject(Project project);
-//    Project getProjectByID(int projectID);
-//    List<Project> getAllProjects();
-//    void addOrUpdateProjectAssignment(int projectId, int employeeId, double hoursBilled);
+    void addProject(Project project);
+    Project getProjectByID(int projectID);
+    List<Project> getAllProjects();
+    void addOrUpdateProjectAssignment(int projectId, int employeeId, double hoursBilled);
 }
 
