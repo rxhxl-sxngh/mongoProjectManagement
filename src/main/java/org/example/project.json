@@ -1,0 +1,118 @@
+[
+  {
+    "ProjectID": 15,
+    "ProjectName": "Evergreen",
+    "Leader": 105,
+    "TotalChargeForProject": 10549.70,
+    "Employees": [
+      {
+        "EmployeeID": 103,
+        "HoursBilled": 23.8
+      },
+      {
+        "EmployeeID": 101,
+        "HoursBilled": 19.4
+      },
+      {
+        "EmployeeID": 105,
+        "HoursBilled": 35.7
+      },
+      {
+        "EmployeeID": 106,
+        "HoursBilled": 12.6
+      },
+      {
+        "EmployeeID": 102,
+        "HoursBilled": 23.8
+      }
+    ]
+  },
+  {
+    "ProjectID": 18,
+    "ProjectName": "Amber Wave",
+    "Leader": 104,
+    "TotalChargeForProject": 7171.47,
+    "Employees": [
+      {
+        "EmployeeID": 114,
+        "HoursBilled": 24.6
+      },
+      {
+        "EmployeeID": 118,
+        "HoursBilled": 45.3
+      },
+      {
+        "EmployeeID": 104,
+        "HoursBilled": 32.4
+      },
+      {
+        "EmployeeID": 112,
+        "HoursBilled": 44.0
+      }
+    ]
+  },
+  {
+    "ProjectID": 22,
+    "ProjectName": "Rolling Tide",
+    "Leader": 113,
+    "TotalChargeForProject": 13660.10,
+    "Employees": [
+      {
+        "EmployeeID": 105,
+        "HoursBilled": 64.7
+      },
+      {
+        "EmployeeID": 104,
+        "HoursBilled": 48.4
+      },
+      {
+        "EmployeeID": 113,
+        "HoursBilled": 23.6
+      },
+      {
+        "EmployeeID": 111,
+        "HoursBilled": 22.0
+      },
+      {
+        "EmployeeID": 106,
+        "HoursBilled": 12.8
+      }
+    ]
+  },
+  {
+    "ProjectID": 25,
+    "ProjectName": "Starflight",
+    "Leader": 101,
+    "TotalChargeForProject": 17559.82,
+    "Employees": [
+      {
+        "EmployeeID": 107,
+        "HoursBilled": 24.6
+      },
+      {
+        "EmployeeID": 115,
+        "HoursBilled": 45.8
+      },
+      {
+        "EmployeeID": 101,
+        "HoursBilled": 56.3
+      },
+      {
+        "EmployeeID": 114,
+        "HoursBilled": 33.1
+      },
+      {
+        "EmployeeID": 108,
+        "HoursBilled": 23.6
+      },
+      {
+        "EmployeeID": 118,
+        "HoursBilled": 30.5
+      },
+      {
+        "EmployeeID": 112,
+        "HoursBilled": 41.4
+      }
+    ]
+  }
+]

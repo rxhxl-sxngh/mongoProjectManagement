@@ -1,0 +1,42 @@
+[
+  {
+    "JobClassID": 1,
+    "JobClassName": "Database Designer",
+    "HourlyRate": 105.0
+  },
+  {
+    "JobClassID": 2,
+    "JobClassName": "Elec. Engineer",
+    "HourlyRate": 84.5
+  },
+  {
+    "JobClassID": 3,
+    "JobClassName": "Programmer",
+    "HourlyRate": 35.75
+  },
+  {
+    "JobClassID": 4,
+    "JobClassName": "Systems Analyst",
+    "HourlyRate": 96.75
+  },
+  {
+    "JobClassID": 5,
+    "JobClassName": "Applications Designer",
+    "HourlyRate": 48.1
+  },
+  {
+    "JobClassID": 6,
+    "JobClassName": "General Support",
+    "HourlyRate": 18.36
+  },
+  {
+    "JobClassID": 7,
+    "JobClassName": "DSS Analyst",
+    "HourlyRate": 45.95
+  },
+  {
+    "JobClassID": 8,
+    "JobClassName": "Clerical Support",
+    "HourlyRate": 26.87
+  }
+]

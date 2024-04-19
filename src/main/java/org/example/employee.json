@@ -1,0 +1,72 @@
+[
+  {
+    "ID": 101,
+    "Name": "John G. News",
+    "JobClassID": 1
+  },
+  {
+    "ID": 102,
+    "Name": "David H. Senior",
+    "JobClassID": 4
+  },
+  {
+    "ID": 103,
+    "Name": "June E. Arbough",
+    "JobClassID": 2
+  },
+  {
+    "ID": 104,
+    "Name": "Anne K. Ramoras",
+    "JobClassID": 4
+  },
+  {
+    "ID": 105,
+    "Name": "Alice K. Johnson",
+    "JobClassID": 1
+  },
+  {
+    "ID": 106,
+    "Name": "William Smithfield",
+    "JobClassID": 3
+  },
+  {
+    "ID": 107,
+    "Name": "Maria D. Alonzo",
+    "JobClassID": 3
+  },
+  {
+    "ID": 108,
+    "Name": "Ralph B. Washington",
+    "JobClassID": 4
+  },
+  {
+    "ID": 111,
+    "Name": "Geoff B. Wabash",
+    "JobClassID": 8
+  },
+  {
+    "ID": 112,
+    "Name": "Darlene M. Smithson",
+    "JobClassID": 7
+  },
+  {
+    "ID": 113,
+    "Name": "Delbert K. Joenbrood",
+    "JobClassID": 5
+  },
+  {
+    "ID": 114,
+    "Name": "Annelise Jones",
+    "JobClassID": 5
+  },
+  {
+    "ID": 115,
+    "Name": "Travis B. Bawangi",
+    "JobClassID": 4
+  },
+  {
+    "ID": 118,
+    "Name": "James J. Frommer",
+    "JobClassID": 6
+  }
+]
