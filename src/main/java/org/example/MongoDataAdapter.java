@@ -6,6 +6,8 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +80,7 @@ public class MongoDataAdapter implements DataAccess {
         return employees;
     }
 
+    // Method to update employees in the MongoDB collection
     public void updateEmployee(Employee employee) {
         try {
             MongoDatabase database = getMongoDatabase();
@@ -93,6 +96,7 @@ public class MongoDataAdapter implements DataAccess {
         }
     }
 
+    // Method to delete employees from the MongoDB collection
     public void deleteEmployee(int employeeID) {
         try {
             MongoDatabase database = getMongoDatabase();
@@ -105,4 +109,103 @@ public class MongoDataAdapter implements DataAccess {
             System.out.println("Failed to delete Employee.");
         }
     }
+
+    // Method to add a jobclass to the MongoDB collection
+    public void addJobClass(Job job) {
+        try {
+            MongoDatabase database = getMongoDatabase();
+            MongoCollection<Document> collection = database.getCollection("jobclass");
+            Document doc = new Document("JobClassID", job.getJobClassID())
+                    .append("JobClassName", job.getJobTitle())
+                    .append("HourlyRate", job.getHourlyWage());
+            collection.insertOne(doc);
+            System.out.println("Job Class added successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to add Job Class.");
+        }
+    }
+
+    // Method to get a jobclass by ID from the MongoDB collection
+    public Job getJobClassByID(int jobClassID) {
+        Job job = null;
+        try {
+            MongoDatabase database = getMongoDatabase();
+            MongoCollection<Document> collection = database.getCollection("jobclass");
+            Document query = new Document("JobClassID", jobClassID);
+            Document result = collection.find(query).first();
+            if (result != null) {
+                job = new Job(result.getInteger("JobClassID"),
+                        result.getString("JobClassName"),
+                        result.getDouble("HourlyRate"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return job;
+    }
+
+    // Method to get all job classes from the MongoDB collection
+    public List<Job> getAllJobClasses() {
+        List<Job> jobList = new ArrayList<>();
+        try {
+            MongoDatabase database = getMongoDatabase();
+            MongoCollection<Document> collection = database.getCollection("jobclass");
+            for (Document doc : collection.find()) {
+                int jobClassID = doc.getInteger("JobClassID");
+                String jobTitle = doc.getString("JobClassName");
+                Object hourlyRateObj = doc.get("HourlyRate");
+                double hourlyWage = 0.0;
+                if (hourlyRateObj instanceof Double) {
+                    hourlyWage = (double) hourlyRateObj;
+                } else {
+                    int hourlyWageInt = (int) hourlyRateObj;
+                    hourlyWage = (double) hourlyWageInt;
+                }
+                Job job = new Job(jobClassID, jobTitle, hourlyWage);
+                jobList.add(job);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jobList;
+    }
+
+    // Method to update a jobclass in the MongoDB collection
+    public void updateJobClass(Job job) {
+        try {
+            MongoDatabase database = getMongoDatabase();
+            MongoCollection<Document> collection = database.getCollection("jobclass");
+            Document filter = new Document("JobClassID", job.getJobClassID());
+            Document update = new Document("$set", new Document("JobClassName", job.getJobTitle())
+                    .append("HourlyRate", job.getHourlyWage()));
+            UpdateResult result = collection.updateOne(filter, update);
+            if (result.getModifiedCount() == 1) {
+                System.out.println("Job Class updated successfully.");
+            } else {
+                System.out.println("Job Class not found or failed to update.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to update Job Class.");
+        }
+    }
+
+    // Method to delete a jobclass in the MongoDB Database
+    public void deleteJobClass(int jobClassID) {
+        try {
+            MongoDatabase database = getMongoDatabase();
+            MongoCollection<Document> collection = database.getCollection("jobclass");
+            Document query = new Document("JobClassID", jobClassID);
+            DeleteResult result = collection.deleteOne(query);
+            if (result.getDeletedCount() == 1) {
+                System.out.println("Job Class deleted successfully.");
+            } else {
+                System.out.println("Job Class not found or failed to delete.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
