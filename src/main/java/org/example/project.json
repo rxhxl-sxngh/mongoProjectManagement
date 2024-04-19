@@ -4,26 +4,31 @@
     "ProjectName": "Evergreen",
     "Leader": 105,
     "TotalChargeForProject": 10549.70,
-    "Employees": [
+    "Assignments": [
       {
         "EmployeeID": 103,
-        "HoursBilled": 23.8
+        "HoursBilled": 23.8,
+        "TotalChargeFromEmployee": 2011.1
       },
       {
         "EmployeeID": 101,
-        "HoursBilled": 19.4
+        "HoursBilled": 19.4,
+        "TotalChargeFromEmployee": 2037.0
       },
       {
         "EmployeeID": 105,
-        "HoursBilled": 35.7
+        "HoursBilled": 35.7,
+        "TotalChargeFromEmployee": 3748.5
       },
       {
         "EmployeeID": 106,
-        "HoursBilled": 12.6
+        "HoursBilled": 12.6,
+        "TotalChargeFromEmployee": 450.45
       },
       {
         "EmployeeID": 102,
-        "HoursBilled": 23.8
+        "HoursBilled": 23.8,
+        "TotalChargeFromEmployee": 2302.65
       }
     ]
   },
@@ -32,22 +37,26 @@
     "ProjectName": "Amber Wave",
     "Leader": 104,
     "TotalChargeForProject": 7171.47,
-    "Employees": [
+    "Assignments": [
       {
         "EmployeeID": 114,
-        "HoursBilled": 24.6
+        "HoursBilled": 24.6,
+        "TotalChargeFromEmployee": 1183.26
       },
       {
         "EmployeeID": 118,
-        "HoursBilled": 45.3
+        "HoursBilled": 45.3,
+        "TotalChargeFromEmployee": 831.71
       },
       {
         "EmployeeID": 104,
-        "HoursBilled": 32.4
+        "HoursBilled": 32.4,
+        "TotalChargeFromEmployee": 3135.7
       },
       {
         "EmployeeID": 112,
-        "HoursBilled": 44.0
+        "HoursBilled": 44.0,
+        "TotalChargeFromEmployee": 2021.8
       }
     ]
   },
@@ -56,26 +65,31 @@
     "ProjectName": "Rolling Tide",
     "Leader": 113,
     "TotalChargeForProject": 13660.10,
-    "Employees": [
+    "Assignments": [
       {
         "EmployeeID": 105,
-        "HoursBilled": 64.7
+        "HoursBilled": 64.7,
+        "TotalChargeFromEmployee": 6794.5
       },
       {
         "EmployeeID": 104,
-        "HoursBilled": 48.4
+        "HoursBilled": 48.4,
+        "TotalChargeFromEmployee": 4682.7
       },
       {
         "EmployeeID": 113,
-        "HoursBilled": 23.6
+        "HoursBilled": 23.6,
+        "TotalChargeFromEmployee": 1135.16
       },
       {
         "EmployeeID": 111,
-        "HoursBilled": 22.0
+        "HoursBilled": 22.0,
+        "TotalChargeFromEmployee": 591.14
       },
       {
         "EmployeeID": 106,
-        "HoursBilled": 12.8
+        "HoursBilled": 12.8,
+        "TotalChargeFromEmployee": 457.6
       }
     ]
   },
@@ -84,34 +98,41 @@
     "ProjectName": "Starflight",
     "Leader": 101,
     "TotalChargeForProject": 17559.82,
-    "Employees": [
+    "Assignments": [
       {
         "EmployeeID": 107,
-        "HoursBilled": 24.6
+        "HoursBilled": 24.6,
+        "TotalChargeFromEmployee": 879.45
       },
       {
         "EmployeeID": 115,
-        "HoursBilled": 45.8
+        "HoursBilled": 45.8,
+        "TotalChargeFromEmployee": 4431.15
       },
       {
         "EmployeeID": 101,
-        "HoursBilled": 56.3
+        "HoursBilled": 56.3,
+        "TotalChargeFromEmployee": 5911.5
       },
       {
         "EmployeeID": 114,
-        "HoursBilled": 33.1
+        "HoursBilled": 33.1,
+        "TotalChargeFromEmployee": 1592.11
       },
       {
         "EmployeeID": 108,
-        "HoursBilled": 23.6
+        "HoursBilled": 23.6,
+        "TotalChargeFromEmployee": 2283.5
       },
       {
         "EmployeeID": 118,
-        "HoursBilled": 30.5
+        "HoursBilled": 30.5,
+        "TotalChargeFromEmployee": 558.98
       },
       {
         "EmployeeID": 112,
-        "HoursBilled": 41.4
+        "HoursBilled": 41.4,
+        "TotalChargeFromEmployee": 1902.33
       }
     ]
   }
