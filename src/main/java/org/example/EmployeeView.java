@@ -12,7 +12,7 @@ public class EmployeeView extends JFrame {
     private JTextField jobClassIDField;
     private final JComboBox<String> operationComboBox;
     private final JPanel panel = new JPanel();
-    MongoDataAdapter mongoDataAdapter = new MongoDataAdapter();
+    private final MongoDataAdapter mongoDataAdapter = new MongoDataAdapter();
 
     public EmployeeView() {
         setTitle("Employee View");
