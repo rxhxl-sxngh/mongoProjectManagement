@@ -68,10 +68,6 @@ public class Project {
     public String toString() {
         return "Project{" +
                 "projectID=" + projectID +
-                ", projectName='" + projectName + '\'' +
-                ", leaderID=" + leaderID +
-                ", totalChargeForProject=" + totalChargeForProject +
-                ", employeeHoursBilled=" + employeeHoursBilled +
-                '}';
+                ", projectName='" + projectName + '}';
     }
 }
