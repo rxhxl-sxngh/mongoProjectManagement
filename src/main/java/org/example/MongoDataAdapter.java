@@ -407,10 +407,19 @@ public class MongoDataAdapter implements DataAccess {
             List<Document> projectAssignments = (List<Document>) collection.find(query).first().get("Assignments");
 
             double totalCharge = 0;
-            // MAY HAVE TO FIX THIS LATER
             for (Document assignment : projectAssignments) {
-                totalCharge += (Double) assignment.get("TotalChargeFromEmployee");
+                double hoursBilled = (Double) assignment.get("HoursBilled");
+                double hourlyRate = getHourlyRateByEmployeeID(assignment.getInteger("EmployeeID"));
+                double totalChargeFromEmployee = calculateTotalCharge(hoursBilled, hourlyRate);
+                assignment.put("TotalChargeFromEmployee", totalChargeFromEmployee);
+                totalCharge += totalChargeFromEmployee;
+                Document updateFields = new Document("Assignments.$.TotalChargeFromEmployee", totalChargeFromEmployee);
+                collection.updateOne(query.append("Assignments.EmployeeID", assignment.getInteger("EmployeeID")), new Document("$set", updateFields));
             }
+            // MAY HAVE TO FIX THIS LATER
+//            for (Document assignment : projectAssignments) {
+//                totalCharge += (Double) assignment.get("TotalChargeFromEmployee");
+//            }
 
             Document updateFields = new Document("TotalChargeForProject", totalCharge);
             collection.updateOne(query, new Document("$set", updateFields));
