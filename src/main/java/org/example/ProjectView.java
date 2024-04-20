@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ProjectView extends JFrame {
+    private final JTextField projectIdField;
     private final JTextField projectNameField;
     private final JTextField leaderIdField;
     private final JTextField totalChargeField;
@@ -25,7 +26,7 @@ public class ProjectView extends JFrame {
 
     public ProjectView() throws SQLException {
         setTitle("Project View");
-        setSize(600, 400);
+        setSize(650, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -36,7 +37,9 @@ public class ProjectView extends JFrame {
         setLayout(new BorderLayout());
 
         // Input Panel
-        JPanel inputPanel = new JPanel(new GridLayout(5, 2));
+        JPanel inputPanel = new JPanel(new GridLayout(6, 2));
+        JLabel projectIdLabel = new JLabel("Project ID:");
+        projectIdField = new JTextField();
         JLabel projectNameLabel = new JLabel("Project Name:");
         projectNameField = new JTextField();
         JLabel leaderIdLabel = new JLabel("Leader ID:");
@@ -47,11 +50,13 @@ public class ProjectView extends JFrame {
         totalChargeField.setEditable(false);
         JButton addButton = new JButton("Add Project");
         JButton editButton = new JButton("Edit Project");
-        JButton addEmployeeButton = new JButton("Add Employee");
+        JButton addEmployeeButton = new JButton("Add or Update Employee Assignment");
         projectComboBox = new JComboBox<>();
 
         inputPanel.add(new JLabel("Select Project:"));
         inputPanel.add(projectComboBox);
+        inputPanel.add(projectIdLabel);
+        inputPanel.add(projectIdField);
         inputPanel.add(projectNameLabel);
         inputPanel.add(projectNameField);
         inputPanel.add(leaderIdLabel);
@@ -74,9 +79,10 @@ public class ProjectView extends JFrame {
 
         // Action Listeners
         addButton.addActionListener(e -> {
+            int projectId = Integer.parseInt(projectIdField.getText());
             String projectName = projectNameField.getText();
             int leaderId = Integer.parseInt(leaderIdField.getText());
-            Project project = new Project(0, projectName, leaderId, 0.0);
+            Project project = new Project(projectId, projectName, leaderId, 0.0);
             mongoDataAdapter.addProject(project);
             // Add the new project to the cached list
             if (cachedProjects != null) {
@@ -113,6 +119,10 @@ public class ProjectView extends JFrame {
                 int employeeId = Integer.parseInt(JOptionPane.showInputDialog("Enter Employee ID:"));
                 double hoursBilled = Double.parseDouble(JOptionPane.showInputDialog("Enter Hours Billed:"));
                 mongoDataAdapter.addOrUpdateProjectAssignment(selectedProject.getProjectID(), employeeId, hoursBilled);
+                selectedProject.addOrUpdateEmployeeHoursBilled(employeeId, hoursBilled);
+                selectedProject = mongoDataAdapter.getProjectByID(selectedProject.getProjectID());
+                totalChargeField.setText(String.valueOf(selectedProject.getTotalChargeForProject()));
+                refreshEmployeeHourlyRates(selectedProject);
                 refreshTable(selectedProject);
             } else {
                 JOptionPane.showMessageDialog(this, "Please select a project first.");
@@ -123,6 +133,7 @@ public class ProjectView extends JFrame {
         projectComboBox.addActionListener(e -> {
             Project selectedProject = (Project) projectComboBox.getSelectedItem();
             if (selectedProject != null) {
+                projectIdField.setText(String.valueOf(selectedProject.getProjectID()));
                 projectNameField.setText(selectedProject.getProjectName());
                 leaderIdField.setText(String.valueOf(selectedProject.getLeaderID()));
                 totalChargeField.setText(String.valueOf(selectedProject.getTotalChargeForProject()));
@@ -167,11 +178,14 @@ public class ProjectView extends JFrame {
 
     // Method to refresh the employee hourly rates for the selected project
     private void refreshEmployeeHourlyRates(Project project) {
-        employeeHourlyRates.clear(); // Clear existing rates
+//        employeeHourlyRates.clear(); // Clear existing rates
         if (project != null) { // Check if project is not null
             for (int employeeId : project.getEmployeeHoursBilled().keySet()) {
-                double hourlyRate = mongoDataAdapter.getHourlyRateByEmployeeID(employeeId);
-                employeeHourlyRates.put(employeeId, hourlyRate);
+                // Check if the employeeId is not already present in employeeHourlyRates
+                if (!employeeHourlyRates.containsKey(employeeId)) {
+                    double hourlyRate = mongoDataAdapter.getHourlyRateByEmployeeID(employeeId);
+                    employeeHourlyRates.put(employeeId, hourlyRate);
+                }
             }
         }
     }
