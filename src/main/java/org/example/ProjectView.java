@@ -37,7 +37,7 @@ public class ProjectView extends JFrame {
         setLayout(new BorderLayout());
 
         // Input Panel
-        JPanel inputPanel = new JPanel(new GridLayout(6, 2));
+        JPanel inputPanel = new JPanel(new GridLayout(7, 2));
         JLabel projectIdLabel = new JLabel("Project ID:");
         projectIdField = new JTextField();
         JLabel projectNameLabel = new JLabel("Project Name:");
@@ -50,6 +50,7 @@ public class ProjectView extends JFrame {
         totalChargeField.setEditable(false);
         JButton addButton = new JButton("Add Project");
         JButton editButton = new JButton("Edit Project");
+        JButton deleteButton = new JButton("Delete Project");
         JButton addEmployeeButton = new JButton("Add or Update Employee Assignment");
         projectComboBox = new JComboBox<>();
 
@@ -65,6 +66,7 @@ public class ProjectView extends JFrame {
         inputPanel.add(totalChargeField);
         inputPanel.add(addButton);
         inputPanel.add(editButton);
+        inputPanel.add(deleteButton);
 
         add(inputPanel, BorderLayout.NORTH);
 
@@ -91,15 +93,29 @@ public class ProjectView extends JFrame {
             refreshProjectList();
         });
 
+        deleteButton.addActionListener(e -> {
+            int projectId = Integer.parseInt(projectIdField.getText());
+            int confirmation = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this project?");
+            if (confirmation == JOptionPane.YES_OPTION) {
+                mongoDataAdapter.deleteProject(projectId);
+                if (cachedProjects != null) {
+                    cachedProjects.removeIf(project -> project.getProjectID() == projectId);
+                }
+                refreshProjectList(); // Refresh project list after deletion
+            }
+        });
+
         editButton.addActionListener(e -> {
             int selectedIndex = projectComboBox.getSelectedIndex();
             if (selectedIndex != -1) {
                 Project selectedProject = (Project) projectComboBox.getSelectedItem();
                 // Update project name or leader ID based on user input
                 String newName = JOptionPane.showInputDialog("Enter New Project Name (Leave blank to keep current name):");
-                if (!newName.isEmpty()) {
-                    selectedProject.setProjectName(newName);
-                }
+                assert selectedProject != null;
+                selectedProject.setProjectName(newName);
+//                if (!newName.isEmpty()) {
+//                    selectedProject.setProjectName(newName);
+//                }
                 String newLeaderId = JOptionPane.showInputDialog("Enter New Leader ID (Leave blank to keep current leader):");
                 if (!newLeaderId.isEmpty()) {
                     int leaderId = Integer.parseInt(newLeaderId);
