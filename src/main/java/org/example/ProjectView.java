@@ -187,7 +187,9 @@ public class ProjectView extends JFrame {
                 int employeeId = entry.getKey();
                 double hoursBilled = entry.getValue();
                 double wages = hoursBilled * getEmployeeHourlyRate(employeeId);
-                tableModel.addRow(new Object[]{employeeId, hoursBilled, wages});
+                // Round wages to 2 decimal places
+                String formattedWages = String.format("%.2f", wages);
+                tableModel.addRow(new Object[]{employeeId, hoursBilled, formattedWages});
             }
         }
     }
