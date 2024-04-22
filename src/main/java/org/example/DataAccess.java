@@ -20,5 +20,6 @@ public interface DataAccess {
     Project getProjectByID(int projectID);
     List<Project> getAllProjects();
     void addOrUpdateProjectAssignment(int projectId, int employeeId, double hoursBilled);
+    void deleteProject(int projectID);
 }
 
